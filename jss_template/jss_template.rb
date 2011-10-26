@@ -26,4 +26,4 @@ end
 
 Tilt.register Jss::Template, 'jss'
 
-require 'jss_template/railtie' if defined?(Rails)
+require 'railtie' if defined?(Rails)
