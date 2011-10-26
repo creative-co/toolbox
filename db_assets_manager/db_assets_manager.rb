@@ -3,7 +3,7 @@ class DbAssetsManager < Rails::Railtie
     load 'db_assets.rake'
   end
 
-  initializer 'db_asset_manager.postgres_fix' do
+  initializer 'db_assets_manager.postgres_fix' do
     require 'mp_postgresql_adapter.rb'
   end
 end

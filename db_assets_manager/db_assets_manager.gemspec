@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name        = 'db_asset_manager'
+  s.name        = 'db_assets_manager'
   s.version     = '1.0.0'
   s.platform    = Gem::Platform::RUBY
   s.author      = 'Ivan Efremov'
