@@ -1,3 +1,5 @@
+require 'tilt'
+
 module Jss
   class Template < Tilt::Template
     include ActionView::Helpers::JavaScriptHelper
