@@ -10,15 +10,9 @@ module Jss
   
     def prepare; end
   
-    def evaluate scope, locals, &block
-      paths = (['JSS'] + scope.logical_path.split(/[\/\\]/)).map{|s| "'#{s}'"}.join(',')
-      
+    def evaluate scope, _
       <<-JS
-  (function() {
-      var paths = [#{paths}], target = this;
-      for (var i = 0; i < paths.length - 1; i++) target = (target[paths[i]] || (target[paths[i]] = {}));
-      target[paths[paths.length-1]] = "#{escape_javascript(data.strip)}";
-  }).call(this);
+(this.JSS || (this.JSS = {}))[#{scope.logical_path.inspect}] = "#{escape_javascript(data.strip)}";
       JS
     end
   end
