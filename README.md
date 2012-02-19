@@ -10,13 +10,22 @@ Also, `db:assets:create` runs automatically after `db:migrate`.
 
 ##jss_template
 
-Provide plain templates to clientside JS.
+Provides plain templates to clientside JS.
 
 Put HTMLs you want in JS somewhere in assets subdirectory, give them `jss` extension.  
 They will be bundled into JSS top-level JavaScript object respecting paths to them.
 
 For example, `app/assets/javascripts/templates/posts/index.jss` will be available as
 String by `JSS.templates.posts.index`.
+
+##js_routes
+
+Provides access from js code to all your application named routes.
+In Rails version > 3.1 just require 'routes.js' in your js files or directly include it into view.
+
+You can hide some important routes from js, for example:
+`get '/some_secret_route', :to => 'secret_controller#secret_action', :hidden => true`
+
 
 ##Installation:
 
