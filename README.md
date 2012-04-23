@@ -26,6 +26,11 @@ In Rails version > 3.1 just require 'routes.js' in your js files or directly inc
 You can hide some important routes from js, for example:
 `get '/some_secret_route', :to => 'secret_controller#secret_action', :hidden => true`
 
+##monkey_patcher
+
+Requirer and autoreloader (in development) for monkey patches.
+Just put your monkey patch files into <rails_root>/lib/monkey_patches directory and relax.
+
 
 ##Installation:
 
