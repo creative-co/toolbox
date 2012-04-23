@@ -7,6 +7,6 @@ Gem::Specification.new do |s|
   s.summary     = 'Tool for monkey patches on rails 3.2'
   s.description = ''
 
-  s.files         = ['monkey_patcher.rb']
-  s.require_path  = '.'
+  s.files         = %w[ railtie.rb monkey_patcher.rb ]
+  s.require_path  = 'railtie.rb'
 end
