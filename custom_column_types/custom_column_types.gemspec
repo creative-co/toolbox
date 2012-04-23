@@ -7,6 +7,6 @@ Gem::Specification.new do |s|
   s.summary     = 'Custom columns type mapping'
   s.description = ''
 
-  s.files         = %w[ custom_column_types.rb custom_column_types_implementation.rb ]
-  s.require_path  = 'custom_column_types.rb'
+  s.files         = %w[ custom_column_types.rb  ]
+  s.require_path  = '.'
 end

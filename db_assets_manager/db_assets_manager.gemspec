@@ -7,6 +7,8 @@ Gem::Specification.new do |s|
   s.summary     = 'DB assets manager'
   s.description = 'DB assets manager'
 
+  s.add_dependency 'activerecord', '>= 3.0.0'
+
   s.files         = ['db_assets.rake', 'db_assets_manager.rb', 'mp_postgresql_adapter.rb']
   s.require_path  = '.'
 end
