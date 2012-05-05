@@ -31,6 +31,12 @@ You can hide some important routes from js, for example:
 Requirer and autoreloader (in development) for monkey patches.
 Just put your monkey patch files into <rails_root>/lib/monkey_patches directory and relax.
 
+##email_validator
+
+Email validation support (see http://my.rails-royce.org/2010/07/21/email-validation-in-ruby-on-rails-without-regexp/ for details).
+Usage:
+`validates :user_email, email: true`
+
 
 ##Installation:
 
