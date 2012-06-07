@@ -1,10 +1,10 @@
 module ActiveRecord
   module ConnectionAdapters
     class PostgreSQLAdapter < AbstractAdapter
-      def table_exists? name
+      # backport from rails 3.2
+      def table_exists?(name)
         name = name.to_s
         schema, table = name.split('.', 2)
-
         unless table # A table was provided without a schema
           table = schema
           schema = nil
@@ -15,19 +15,19 @@ module ActiveRecord
           schema = nil
         end
 
-        table_exists = query(<<-SQL).first[0].to_i > 0
+        return false unless table
+
+        binds = [[nil, table]]
+        binds << [nil, schema] if schema
+
+        exec_query(<<-SQL, 'SCHEMA', binds).rows.first[0].to_i > 0
             SELECT COUNT(*)
-            FROM pg_tables
-            WHERE tablename = '#{table.gsub(/(^"|"$)/, '')}'
-            #{schema ? "AND schemaname = '#{schema}'" : ''}
+            FROM pg_class c
+            LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind in ('v','r')
+            AND c.relname = $1
+            AND n.nspname = #{schema ? '$2' : 'ANY (current_schemas(false))'}
         SQL
-        view_exists = query(<<-SQL).first[0].to_i > 0
-            SELECT COUNT(*)
-            FROM pg_views
-            WHERE viewname = '#{table.gsub(/(^"|"$)/, '')}'
-            #{schema ? "AND schemaname = '#{schema}'" : ''}
-        SQL
-        table_exists || view_exists
       end
     end
   end
