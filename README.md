@@ -37,6 +37,19 @@ Email validation support (see http://my.rails-royce.org/2010/07/21/email-validat
 Usage:
 `validates :user_email, email: true`
 
+##retryable
+
+Options:
+* :tries - Number of retries to perform. Defaults to 1.
+* :on    - The Exception on which a retry will be performed. Defaults to Exception, which retries on any Exception.
+* :sleep - Interval between tries in sec. Defaults to 1.
+
+Usage:
+```ruby
+retryable(:tries => 1, :on => OpenURI::HTTPError) do
+    # your code here
+end
+```
 
 ##Installation:
 
