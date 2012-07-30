@@ -12,7 +12,7 @@
 # from http://blog.codefront.net/2008/01/14/retrying-code-blocks-in-ruby-on-exceptions-whatever/
 
 def retryable(options = {}, &block)
-  opts = {:tries => 1, :on => Exception}.merge(options)
+  opts = {:tries => 1, :on => StandardError}.merge(options)
   retry_exception, retries = opts[:on], opts[:tries]
   begin
     return yield
