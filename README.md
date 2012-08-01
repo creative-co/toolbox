@@ -51,6 +51,17 @@ retryable(:tries => 1, :on => OpenURI::HTTPError) do
 end
 ```
 
+##request_variables
+
+Add remember declaration to application_controller (or somewhere)
+```ruby
+class ApplicationController
+  include RequestVariables::Support
+  remember_request_variables :current_user
+end
+```
+Use variables anywhere `RequestVariables.current_user`
+
 ##Installation:
 
 	git "git://github.com/cloudcastle/toolbox.git" do
