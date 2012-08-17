@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'jss_template'
-  s.version     = '1.1.0'
+  s.version     = '1.1.1'
   s.platform    = Gem::Platform::RUBY
   s.author      = 'Ilia Ablamonov'
   s.email       = 'ilia@flamefork.ru'
